@@ -344,7 +344,7 @@ export class CommandSequenceEditor {
 
 			input.setValue("");
 			if (addButton) {
-				addButton.buttonEl.style.display = "none";
+				addButton.setDisabled(true);
 			}
 		};
 
@@ -385,14 +385,12 @@ export class CommandSequenceEditor {
 			.addButton((button) => {
 				addButton = button;
 				button.setButtonText("Add").setCta().onClick(addUserScriptFromInput);
-				button.buttonEl.style.display = "none";
+				button.setDisabled(true);
 			});
 
 		input.onChange((value) => {
 			if (!addButton) return;
-			addButton.buttonEl.style.display = value.trim()
-				? "inline-block"
-				: "none";
+			addButton.setDisabled(!value.trim());
 		});
 	}
 
